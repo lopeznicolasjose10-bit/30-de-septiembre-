@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Feliz 30 de Septiembre ❤️</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #000;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* PANTALLA INICIAL */
+
+.inicio {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    z-index: 100;
+    transition: opacity 1s;
+}
+
+.inicio h1 {
+    color: #fff;
+    font-size: clamp(28px, 6vw, 55px);
+    max-width: 800px;
+    line-height: 1.3;
+}
+
+.inicio h1 span {
+    color: #ff4fa3;
+}
+
+.boton {
+    margin-top: 30px;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 30px;
+    background: #ff4fa3;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ff4fa3;
+}
+
+.boton:hover {
+    transform: scale(1.08);
+}
+
+
+/* PAGINA PRINCIPAL */
+
+.contenido {
+    display: none;
+    min-height: 100vh;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.titulo {
+    font-size: clamp(30px, 7vw, 65px);
+    color: #ff4fa3;
+    text-shadow: 0 0 20px #ff4fa3;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+
+/* MOTOS */
+
+.motos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.moto {
+    position: relative;
+    height: 230px;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #111;
+    box-shadow: 0 0 15px rgba(255, 79, 163, 0.5);
+    transition: transform 0.3s;
+}
+
+.moto:hover {
+    transform: scale(1.05);
+}
+
+.moto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.moto::after {
+    content: "TÓCAME ❤️";
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.75);
+    padding: 7px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+
+/* MENSAJE */
+
+.mensaje {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 85%;
+    max-width: 500px;
+    padding: 30px;
+    background: #080808;
+    border: 2px solid #ff4fa3;
+    border-radius: 25px;
+    box-shadow: 0 0 35px #ff4fa3;
+    text-align: center;
+    font-size: 23px;
+    font-weight: bold;
+    z-index: 200;
+    transition: transform 0.3s;
+}
+
+.mensaje.mostrar {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.cerrar {
+    margin-top: 20px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 20px;
+    background: #ff4fa3;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- PRIMERA PANTALLA -->
+
+<div class="inicio" id="inicio">
+
+    <h1>
+        A él le gustan las motos... 🏍️<br>
+        y a mí me gusta <span>él ❤️</span>
+    </h1>
+
+    <button class="boton" onclick="entrar()">
+        De acuerdo ❤️
+    </button>
+
+</div>
+
+
+<!-- PAGINA PRINCIPAL -->
+
+<div class="contenido" id="contenido">
+
+    <h1 class="titulo">
+        Feliz 30 de septiembre ❤️
+    </h1>
+
+    <p class="subtitulo">
+        Para alguien muy especial para mí 🏍️❤️
+    </p>
+
+
+    <div class="motos">
+
+        <div class="moto" onclick="mostrarMensaje(0)">
+            <img src="moto1.jpg.jpg.jpeg">
+        </div>
+
+        <div class="moto" onclick="mostrarMensaje(1)">
+            <img src="moto2.jpg.webp">
+        </div>
+
+        <div class="moto" onclick="mostrarMensaje(2)">
+            <img src="moto3.jpg.webp">
+        </div>
+
+        <div class="moto" onclick="mostrarMensaje(3)">
+            <img src="moto4.jpg.webp">
+        </div>
+
+        <div class="moto" onclick="mostrarMensaje(4)">
+            <img src="moto5.jpg.webp">
+        </div>
+
+        <div class="moto" onclick="mostrarMensaje(5)">
+            <img src="moto6.jpg.jpg.jpeg">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MENSAJE -->
+
+<div class="mensaje" id="mensaje">
+
+    <div id="textoMensaje"></div>
+
+    <button class="cerrar" onclick="cerrarMensaje()">
+        ❤️
+    </button>
+
+</div>
+
+
+<script>
+
+const mensajes = [
+
+    "Eres muy especial para mí ❤️",
+
+    "Eres todo para mí, aunque a veces no sepa cómo decirlo 🥹❤️",
+
+    "Me encanta verte feliz haciendo lo que te gusta 🏍️❤️",
+
+    "Entre tantas motos, tú sigues siendo mi favorito 😍",
+
+    "Gracias por existir y por hacer mis días más bonitos ❤️",
+
+    "Te quiero muchísimo y espero que nunca olvides lo importante que eres para mí 🥰"
+
+];
+
+
+function entrar() {
+
+    const inicio = document.getElementById("inicio");
+    const contenido = document.getElementById("contenido");
+
+    inicio.style.opacity = "0";
+
+    setTimeout(() => {
+
+        inicio.style.display = "none";
+        contenido.style.display = "block";
+
+    }, 1000);
+}
+
+
+function mostrarMensaje(numero) {
+
+    const mensaje = document.getElementById("mensaje");
+    const texto = document.getElementById("textoMensaje");
+
+    texto.textContent = mensajes[numero];
+
+    mensaje.classList.add("mostrar");
+}
+
+
+function cerrarMensaje() {
+
+    const mensaje = document.getElementById("mensaje");
+
+    mensaje.classList.remove("mostrar");
+}
+
+</script>
+
+</body>
+</html>
